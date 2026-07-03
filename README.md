@@ -8,7 +8,7 @@
 
 > **Tema:** Akıllı Şehir & Toplu Taşıma  
 > **Teslim Tarihi:** 3 Temmuz 2026  
-> **Çalışma Şekli:** Bireysel
+> **Çalışma Şekli:** İki kişilik proje
 
 ---
 
@@ -178,4 +178,4 @@ Detaylar için: [İBB Açık Veri Lisansı](https://data.ibb.gov.tr)
 
 ## İletişim
 
-Bu proje bireysel bir Veri Bilimi dönem projesidir.
+Bu proje İki kişilik bir Veri Bilimi dönem projesidir.
