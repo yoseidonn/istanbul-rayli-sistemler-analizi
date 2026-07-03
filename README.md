@@ -47,21 +47,36 @@ Tüm veriler [İBB Açık Veri Portalı](https://data.ibb.gov.tr) — **Mobilite
 
 ```
 verib/
-├── proje.ipynb              # Ana notebook (8 bölüm)
-├── rapor.pdf                # 3-5 sayfa proje raporu
-├── prompt_gunlugu.md        # Prompt günlüğü
+├── proje.ipynb              # Ana notebook (8 bölüm, 25 kod hücresi)
+├── rapor.pdf → outputs/     # 4 sayfa PDF rapor
+├── prompt_gunlugu.md        # 13 prompt'luk kronolojik günlük
 ├── README.md                # Bu dosya
-├── PLAN.md                  # Proje planı
-├── data/                    # Ham veri setleri
-│   ├── 2021_yolcu.csv       # ~79 MB
-│   ├── 2022_yolcu.csv       # ~11 MB
-│   ├── 2023_yolcu.csv       # ~11 MB
-│   ├── 2024_yolcu.csv       # ~100 MB
-│   ├── 2025_yolcu.csv       # ~14 MB
+├── PLAN.md                  # Orijinal proje planı
+├── .gitignore               # data/ ve .venv/ hariç
+├── data/                    # Ham veri setleri (~210 MB, git-ignore)
+│   ├── 2021_yolcu.csv
+│   ├── 2022_yolcu.csv
+│   ├── 2023_yolcu.csv
+│   ├── 2024_yolcu.csv
+│   ├── 2025_yolcu.csv
 │   ├── istasyon_bilgileri.xlsx
 │   ├── hat_uzunluklari.xlsx
 │   └── aktarma_bilgileri.xlsx
-└── *.png                    # Notebook tarafından üretilen görseller
+└── outputs/                 # Notebook tarafından üretilen tüm çıktılar
+    ├── viz1_monthly_trend.png
+    ├── viz2_heatmap.png
+    ├── viz3_barplot.png
+    ├── viz4_boxplot.png
+    ├── viz5_corr_scatter.png
+    ├── missingno_matrix.png
+    ├── outlier_analysis.png
+    ├── regression_results.png
+    ├── optimal_k.png
+    ├── cluster_results.png
+    ├── geo_stations.png
+    ├── line_efficiency.png
+    ├── folium_map.html       # İnteraktif harita
+    └── rapor.pdf
 ```
 
 ---
