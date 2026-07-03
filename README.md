@@ -2,13 +2,20 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)](https://jupyter.org)
-[![License](https://img.shields.io/badge/License-İBB%20Açık%20Veri-green.svg)](https://data.ibb.gov.tr)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 **Veri Bilimi Dönem Projesi** — İstanbul Büyükşehir Belediyesi Açık Veri Portalı'ndaki raylı sistem verilerinin çok boyutlu analizi.
 
 > **Tema:** Akıllı Şehir & Toplu Taşıma  
 > **Teslim Tarihi:** 3 Temmuz 2026  
 > **Çalışma Şekli:** İki kişilik proje
+
+### Ekip
+
+| Öğrenci | Numara |
+|---------|--------|
+| Yusuf Kiriş | 1306240051 |
+| Burhan Seyfi | 1306200019
 
 ---
 
@@ -171,11 +178,6 @@ jupyter nbconvert --to notebook --execute --inplace proje.ipynb
 
 ## Lisans
 
-Bu projedeki veriler **İstanbul Büyükşehir Belediyesi Açık Veri Lisansı** altında kullanılmaktadır.  
+Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır.  
+Projede kullanılan veriler **İstanbul Büyükşehir Belediyesi Açık Veri Lisansı** altındadır.  
 Detaylar için: [İBB Açık Veri Lisansı](https://data.ibb.gov.tr)
-
----
-
-## İletişim
-
-Bu proje İki kişilik bir Veri Bilimi dönem projesidir.
