@@ -29,7 +29,7 @@ Bu dosya, proje boyunca Claude Code'a yöneltilen 12 kritik prompt'u kronolojik 
 ## Aşama 2: Veri Yükleme ve Temizleme
 
 ### Prompt 3 — Farklı formatlardaki CSv'leri yükleme
-> 5 yılın CSV'si farklı delimiter, encoding ve sütun formatında: 2021/2024 virgül delimiter + tırnaklı + BOM, 2022 virgül + Latin-1 encoding, 2023/2025 noktalı virgül. Her yılı ayrı ayrı okuyup tek bir DataFrame'de birleştirir misin? 2021 ve 2024'te terminal_number sütunu var, onu gruplayıp istasyon bazına indirge.
+> Elimdeki 5 yıllık csv'lerin delimiter ve encodingleri falan hep farklı gelmiş. 2021 ve 2024 virgül delimiter, tırnaklı bide BOM'lu. 23 ve 25'i de direkt noktalı virgül bırakmışlar. bunları ayrı ayrı okutup tek bi df'te birleştirebilir misin? bi de 21 ve 24'teki terminal_number kolonunu istasyon bazında gruplayıp indirgemek lazım, ilerde kolaylık sağlar.
 
 **Aşama:** §2 Veri yükleme  
 **Çıktı:** `load_terminal_based()`, `load_2022()`, `load_2023()`, `load_2025()` fonksiyonları; `standardize_columns()` ile sütun isimleri normalize edildi; 544 bin satır tek DataFrame'de birleştirildi.
@@ -37,7 +37,7 @@ Bu dosya, proje boyunca Claude Code'a yöneltilen 12 kritik prompt'u kronolojik 
 ---
 
 ### Prompt 4 — Koordinat düzeltme ve aykırı değer temizliği
-> Bazı koordinatlar Türkçe locale yüzünden bozuk: 28.933 yerine 289.333 veya 289.343.888.889 olarak kaydedilmiş. Bu değerleri düzelten bir fonksiyon yaz. Ayrıca passage_cnt için %1-%99 persentil aralığında aykırı değer temizliği yap, passage/passanger oranı 10'dan büyük olanları filtrele.
+> Bazı koordinatlar Türkçe locale yüzünden bozuk: 28.933 yerine 289.333 veya 289.343.888.889 olarak kaydedilmiş. Bu değerleri düzelten bir fonksiyon yaz. Ayrıca passage_cnt için %1-%99 aralığında aykırı değer temizliği yap, passage/passanger oranı 10'dan büyük olanları sil.
 
 **Aşama:** §3.2-3.3 Veri temizleme  
 **Çıktı:** `fix_coordinate()` fonksiyonu (çoklu nokta, eksik değer, ValueError handling ile); persentil tabanlı filtreleme ve oran kontrolü.
@@ -45,7 +45,7 @@ Bu dosya, proje boyunca Claude Code'a yöneltilen 12 kritik prompt'u kronolojik 
 ---
 
 ### Prompt 5 — Hat ve istasyon ismi normalizasyonu + fuzzy merge
-> Dataset A'da hat isimleri "M1-YENIKAPI-HAVALIMANI", Dataset B'de "M1" formatında. Regex ile kısa hat kodu çıkar. İstasyon isimlerini de normalize edip (büyük harf, Türkçe karakter temizliği) merge et. Eşleşmeyenler için difflib fuzzy matching kullan. Sonra hat uzunlukları ve aktarma bilgilerini de merge edip `is_transfer` binary flag'i oluştur.
+> Datast A'da hat isimleri "M1-YENIKAPI-HAVALIMANI", Dataset B'de "M1" formatında. Regex ile kısa hat kodu çıkar. İstasyon isimlerini de normalize edip (büyük harf, Türkçe karakter temizliği) merge et. Eşleşmeyenler için fuzzy matching kullan. Sonra hat uzunlukları ve aktarma bilgilerini de merge edip `is_transfer` flagi oluştur.
 
 **Aşama:** §3.4-3.5 Merge  
 **Çıktı:** `extract_line_code()` (M1A, TF2, TCDD, TUNEL özel durumlarıyla), `normalize_name()`, fuzzy matching ile ~%48 eşleşme oranı, 4 veri seti birleştirildi, 44 aktarma istasyonu tespit edildi.
@@ -63,7 +63,7 @@ Bu dosya, proje boyunca Claude Code'a yöneltilen 12 kritik prompt'u kronolojik 
 ---
 
 ### Prompt 7 — Mevsimsellik ve zamansal analiz (RQ1)
-> 5 araştırma sorusundan ilki mevsimsellik ve haftanın günü etkisi. Aylık trend lineplot'u hat tipine göre renklendir, gün×ay heatmap'i yap, haftaiçi/haftasonu boxplot karşılaştırması ekle. Aykırı değerleri gösterme. Bulguları RQ1 etiketiyle yazdır.
+> 5 araştırma sorusundan ilki mevsimsellik ve haftanın günü etkisi. Aylık trend lineplotu hat tipine göre renklendir, gün x ay heatmap'i yap, haftaiçi/haftasonu boxplot karşılaştırması ekle. Aykırı değerleri gösterme. Bulguları RQ1 etiketiyle yazdır.
 
 **Aşama:** §4.2-4.5 EDA  
 **Çıktı:** 4 görselleştirme (lineplot, heatmap, barplot, boxplot); RQ1 cevabı: haftasonu %24 düşüş, yaz aylarında azalma, Metro hatları lider.
@@ -71,7 +71,7 @@ Bu dosya, proje boyunca Claude Code'a yöneltilen 12 kritik prompt'u kronolojik 
 ---
 
 ### Prompt 8 — Korelasyon ve altyapı-yolcu ilişkisi
-> Sayısal değişkenler arası korelasyon heatmap'i çiz, istasyon büyüklüğü vs yolcu scatter plot'unu aktarma renklendirmesiyle yap. RQ2 için gözlem notunu ekle.
+> Sayısal değişkenler arası korelasyon heatmapi çiz, istasyon büyüklüğü vs yolcu scatter plotunu aktarma renklendirmesiyle yap. RQ2 için gözlem notunu ekle.
 
 **Aşama:** §4.6 EDA  
 **Çıktı:** Korelasyon heatmap (9 değişken), büyüklük-yolcu scatter plot (aktarma kırmızı).

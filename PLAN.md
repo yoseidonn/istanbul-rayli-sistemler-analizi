@@ -3,7 +3,7 @@
 **Ders:** Veri Bilimi Dönem Projesi  
 **Tema:** Akıllı Şehir & Toplu Taşıma  
 **Teslim Tarihi:** 3 Temmuz 2026, 12:30  
-**Çalışma Şekli:** Bireysel
+**Çalışma Şekli:** İki kişilik grup
 
 ---
 
